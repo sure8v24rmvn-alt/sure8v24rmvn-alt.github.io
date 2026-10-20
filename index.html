@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light" data-lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>徐鑫悦 · 建筑学 × AI 产品｜个人主页 / 作品集</title>
+<meta name="description" content="徐鑫悦，同济大学建筑学大五，2027 届秋招求职 AI 产品岗。作品：共栖椅（人猫共用藤编家具与参数化生成工具）、成长计划（AI 考研规划系统）。">
+<meta name="theme-color" content="#F1EFEA" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0D0D0C" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="徐鑫悦 · 个人主页">
+<meta property="og:title" content="徐鑫悦 · 建筑学 × AI 产品">
+<meta property="og:description" content="建筑学出身，做 AI 产品：共栖椅（人猫共用家具 + 参数化生成工具）与成长计划（200 人内测、160+ 份问卷）。">
+<meta property="og:image" content="assets/images/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="徐鑫悦 · 建筑学 × AI 产品">
+<meta name="twitter:description" content="建筑学出身，做 AI 产品：共栖椅与成长计划。">
+<meta name="twitter:image" content="assets/images/og-cover.jpg">
+<!-- 浏览器标签页图标：XXY 字标（深底 + 纸色字） -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2316150F'/%3E%3Ctext x='32' y='41' font-family='monospace' font-size='21' font-weight='700' fill='%23F1EFEA' text-anchor='middle'%3EXXY%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "徐鑫悦",
+  "alternateName": "Xinyue Xu",
+  "jobTitle": "AI 产品",
+  "affiliation": { "@type": "CollegeOrUniversity", "name": "同济大学" },
+  "email": "mailto:1345341356@qq.com",
+  "address": { "@type": "PostalAddress", "addressLocality": "上海", "addressCountry": "CN" },
+  "knowsAbout": ["AI 产品设计", "用户研究", "参数化设计", "人机交互"]
+}
+</script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">跳到主内容</a>
+
+<!-- ══════════════ 顶栏：品牌 / 导航 / 语言 · 主题 · 菜单 ══════════════ -->
+<header class="site-head" id="siteHead">
+  <div class="site-head__progress" id="progress" aria-hidden="true"></div>
+  <div class="wrap site-head__inner">
+    <a class="brand" href="#top">
+      <span class="brand__mark" id="brandMark">—</span>
+      <span class="brand__name" id="brandName">—</span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="主导航">
+      <a href="#about"      data-nav="about">      <em>01</em><span>关于</span>   <i>ABOUT</i></a>
+      <a href="#skills"     data-nav="skills">     <em>02</em><span>技能</span>   <i>SKILLS</i></a>
+      <a href="#works"      data-nav="works">      <em>03</em><span>作品</span>   <i>WORKS</i></a>
+      <a href="#experience" data-nav="experience"> <em>04</em><span>经历</span>   <i>CV</i></a>
+      <a href="#contact"    data-nav="contact">    <em>05</em><span>联系</span>   <i>CONTACT</i></a>
+    </nav>
+
+    <div class="head-actions">
+      <button type="button" class="ghost-btn" id="langToggle" title="切换中英文" aria-label="切换中英文">EN</button>
+      <button type="button" class="ghost-btn" id="themeToggle" title="切换夜间模式" aria-label="切换夜间模式">◐</button>
+      <button type="button" class="ghost-btn menu-btn" id="menuToggle" title="菜单" aria-label="菜单"
+              aria-expanded="false" aria-controls="nav">≡</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ══════════════ 00 首屏 ══════════════ -->
+  <section class="hero" id="top">
+    <div class="wrap hero__grid">
+      <div class="hero__text">
+        <p class="eyebrow" id="heroEyebrow">—</p>
+        <h1 class="hero__name" id="heroName">—</h1>
+        <p class="hero__tagline" id="heroTagline">—</p>
+        <dl class="meta-list" id="heroMeta"></dl>
+        <div class="hero__cta" id="heroCta"></div>
+      </div>
+      <div class="hero__sheet">
+        <figure class="sheet" id="heroSheet">
+          <!-- 图纸框：JS 会在这里画一张生成式的"平面图" -->
+        </figure>
+      </div>
+    </div>
+    <div class="wrap hero__foot">
+      <span class="mono muted" id="heroUpdated">—</span>
+      <span class="scroll-hint mono">向下滚动 <i>SCROLL</i> ↓</span>
+    </div>
+  </section>
+
+  <!-- ══════════════ 01 关于 ══════════════ -->
+  <section class="section" id="about">
+    <div class="wrap">
+      <header class="sec-head">
+        <em class="sec-head__no">01</em>
+        <h2 class="sec-head__zh">关于我</h2>
+        <i class="sec-head__en">ABOUT</i>
+        <span class="sec-head__rule" aria-hidden="true"></span>
+      </header>
+      <div class="about" id="aboutBody"></div>
+      <p class="edit-hint" data-hint>示例内容 —— 在 <code>js/data.js</code> 的 <code>about</code> 里替换成你自己的。</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ 02 技能 ══════════════ -->
+  <section class="section" id="skills">
+    <div class="wrap">
+      <header class="sec-head">
+        <em class="sec-head__no">02</em>
+        <h2 class="sec-head__zh">技能与工具</h2>
+        <i class="sec-head__en">SKILLS / TOOLS</i>
+        <span class="sec-head__rule" aria-hidden="true"></span>
+      </header>
+      <div class="skills" id="skillsBody"></div>
+      <p class="edit-hint" data-hint>每条技能下面是一句“在哪个项目里怎么用”（数据里 <code>note</code> 字段），触屏和键盘也能看到。</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ 03 作品集 ══════════════ -->
+  <section class="section" id="works">
+    <div class="wrap">
+      <header class="sec-head">
+        <em class="sec-head__no">03</em>
+        <h2 class="sec-head__zh">作品集</h2>
+        <i class="sec-head__en">SELECTED WORKS</i>
+        <span class="sec-head__rule" aria-hidden="true"></span>
+      </header>
+
+      <div class="works-bar">
+        <div class="filters" id="worksFilters" role="group" aria-label="作品筛选"></div>
+        <div class="works-bar__right">
+          <p class="works-count mono muted" id="worksCount">—</p>
+          <div class="view-toggle" id="worksView" role="group" aria-label="视图切换">
+            <button type="button" data-view="grid" class="is-on" title="网格视图" aria-label="网格视图">▦</button>
+            <button type="button" data-view="index" title="索引视图" aria-label="索引视图">☰</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="works-grid" id="worksGrid"></div>
+      <p class="empty-note" id="worksEmpty" hidden>这个筛选条件下暂时没有作品。</p>
+
+      <p class="edit-hint" data-hint>点卡片看详情 · 图片放进 <code>assets/images/projects/&lt;作品id&gt;/</code>，然后在 <code>data.js</code> 里写文件名。</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ 04 经历 ══════════════ -->
+  <section class="section" id="experience">
+    <div class="wrap">
+      <header class="sec-head">
+        <em class="sec-head__no">04</em>
+        <h2 class="sec-head__zh">经历 / 简历</h2>
+        <i class="sec-head__en">EXPERIENCE</i>
+        <span class="sec-head__rule" aria-hidden="true"></span>
+      </header>
+
+      <div class="cv-bar">
+        <div class="filters" id="expFilters" role="group" aria-label="经历筛选"></div>
+        <a class="btn-line" id="cvDownload" href="#" download>下载简历 PDF <i>↓</i></a>
+      </div>
+
+      <ol class="timeline" id="timeline"></ol>
+      <p class="edit-hint" data-hint>按时间倒序排列；<code>type</code> 决定归类（教育 / 实践 / 获奖 / 活动）。</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ 05 联系 ══════════════ -->
+  <section class="section section--contact" id="contact">
+    <div class="wrap">
+      <header class="sec-head">
+        <em class="sec-head__no">05</em>
+        <h2 class="sec-head__zh">联系</h2>
+        <i class="sec-head__en">CONTACT</i>
+        <span class="sec-head__rule" aria-hidden="true"></span>
+      </header>
+      <div id="contactBody"></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ══════════════ 页脚 ══════════════ -->
+<footer class="foot">
+  <div class="wrap foot__inner">
+    <span class="mono" id="footLeft">—</span>
+    <span class="mono muted" id="footRight">—</span>
+    <a class="mono foot__top" id="footTop" href="#top">回到顶部 ↑</a>
+  </div>
+</footer>
+
+<!-- ══════════════ 作品详情浮层 ══════════════ -->
+<div class="overlay" id="overlay" hidden role="dialog" aria-modal="true" aria-labelledby="ovTitle">
+  <div class="overlay__bar">
+    <button type="button" class="ghost-btn" id="ovClose" aria-label="关闭">关闭 <em>ESC</em></button>
+    <div class="overlay__pager">
+      <button type="button" class="ghost-btn" id="ovPrev" aria-label="上一个作品">← <em>上一个</em></button>
+      <button type="button" class="ghost-btn" id="ovNext" aria-label="下一个作品"><em>下一个</em> →</button>
+    </div>
+  </div>
+  <div class="overlay__scroll" id="ovScroll">
+    <div class="wrap overlay__inner" id="ovBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" hidden role="status" aria-live="polite"></div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script src="js/demo.js"></script>
+</body>
+</html>
