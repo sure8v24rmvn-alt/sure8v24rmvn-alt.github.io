@@ -1,7 +1,18 @@
 # 个人主页 · 使用说明
 
+**线上地址：https://sure8v24rmvn-alt.github.io/**
+仓库：https://github.com/sure8v24rmvn-alt/sure8v24rmvn-alt.github.io（GitHub Pages，main 分支根目录）
+
 一个「个人介绍 + 简历 + 作品集」三合一的单页网站。原生 HTML / CSS / JavaScript 手写，
 **没有任何依赖、不需要安装任何东西、不需要联网**，双击 `index.html` 就能看。
+
+## 改完怎么发布
+
+```bash
+git add -A && git commit -m "改了什么" && git push
+```
+
+GitHub Pages 会在 1–2 分钟内自动重新发布，地址不变。国内直连 github.com 的 git 操作需要开代理；`api.github.com` 和 `*.github.io` 一般可以直连。
 
 ---
 
