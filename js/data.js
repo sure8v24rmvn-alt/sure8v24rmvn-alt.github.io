@@ -220,7 +220,7 @@ window.SITE_DATA = {
       ],
 
       board: {
-        no: { zh: 'CASE-02 · 产品案例', en: 'CASE-02 · PRODUCT CASE' },
+        no: { zh: 'CASE-01 · 产品案例', en: 'CASE-01 · PRODUCT CASE' },
         en: 'Growth Plan',
         meta: [
           { k: { zh: '角色', en: 'Role' },   v: { zh: '产品负责人 · 设计与开发', en: 'Product lead' } },
@@ -290,6 +290,111 @@ window.SITE_DATA = {
         ],
         original: '',
         foot: { zh: '产品案例 · 截图取自本地运行的实际界面', en: 'Product case · screens from the running app' },
+      },
+    },
+    {
+      id: 'tezign-rules',
+      featured: true,
+      title:    { zh: '把审稿经验拆成规则', en: 'Turning review know-how into rules' },
+      subtitle: { zh: '在特赞做 AI 内容生产：把医学大会视频的脚本审校拆成 20 条基础规则 + 7 类专项规则，再用测试和迭代把它变成团队能复用的规则库。',
+                  en: 'AI content production at Tezign: I turned medical-congress script review into 20 base rules plus 7 specialised sets, then tested and iterated it into something the team could reuse.' },
+      kindKey: 'operation',
+      kindLabel: { zh: 'AI 内容 / 运营', en: 'AI content' },
+      year: '2026',
+      role:  { zh: '规则设计 / 产品测试 / 交付', en: 'Rules · testing · delivery' },
+      site:  { zh: '特赞（上海）· 某跨国药企项目', en: 'Tezign · pharmaceutical client' },
+      status: { zh: '进行中 · 已迭代 3 轮', en: 'Ongoing · 3 rounds' },
+      cover: 'assets/images/projects/tezign-rules/cover.webp',
+      results: [
+        { zh: '20 + 7 条规则', en: '20 + 7 rules' },
+        { zh: '3 轮迭代', en: '3 rounds' },
+        { zh: '5+ 问题修复', en: '5+ issues fixed' },
+      ],
+      tags: [
+        { zh: '规则设计', en: 'Rule design' },
+        { zh: '产品测试', en: 'Product testing' },
+        { zh: 'AI 内容生产', en: 'AI content' },
+      ],
+      desc: [
+        { zh: '医学大会视频的脚本要过合规：数值必须带研究背景、口语要清理、价格不能出现。以前靠资深同事逐条改，标准在几个人的经验里；接进 AI 之后，模型需要一个可解释、可维护的规则层。',
+          en: 'Medical congress scripts have to clear compliance: numbers need their study context, spoken language has to be cleaned up, pricing cannot appear. The standard used to live in a few reviewers\' heads; once AI enters the pipeline, it needs an explainable, maintainable rule layer.' },
+        { zh: '我做的事介于产品和运营之间：把改稿动作拆成规则，写清适用条件和正反示例；用真实脚本测流程，把问题整理成清单推动修复；最后把规则落到模板、手册和 SOP 里，让下一个人不用从头再摸一遍。',
+          en: 'My work sat between product and operations: turning edits into rules with conditions and examples, testing the pipeline on real scripts, logging issues for fixes, and landing the rules in templates, manuals and SOPs so the next person does not start from zero.' },
+      ],
+      images: [
+        { src: 'assets/images/projects/tezign-rules/rules.webp', caption: { zh: '规则库的三层结构：基础规则 / 专项规则 / 词库', en: 'Three layers: base rules, specialised rules, lexicons' } },
+        { src: 'assets/images/projects/tezign-rules/tests.webp', caption: { zh: '测试发现的三个业务问题', en: 'Three business issues found in testing' } },
+      ],
+      board: {
+        no: { zh: 'CASE-02 · 内容产品', en: 'CASE-02 · CONTENT PRODUCT' },
+        en: 'Rules for AI content',
+        meta: [
+          { k: { zh: '角色', en: 'Role' },   v: { zh: '规则设计 · 产品测试 · 交付', en: 'Rules · testing · delivery' } },
+          { k: { zh: '时间', en: 'When' },   v: { zh: '2026.06 – 至今', en: 'Jun 2026 – present' } },
+          { k: { zh: '客户', en: 'Client' }, v: { zh: '某跨国药企（已脱敏）', en: 'Pharmaceutical client (anonymised)' } },
+          { k: { zh: '形态', en: 'Form' },   v: { zh: 'AI 内容生产流水线 · 规则库', en: 'AI content pipeline · rule library' } },
+          { k: { zh: '状态', en: 'Status' }, v: { zh: '进行中 · 3 轮迭代', en: 'Ongoing · 3 rounds' } },
+        ],
+        panels: [
+          { t: 'text', w: 12, kicker: { zh: '01 / 背景', en: '01 / Context' },
+            h: { zh: 'AI 审稿最难的不是模型，是把“什么叫合规”写成可执行的规则', en: 'The hard part is not the model — it is writing down what “compliant” means' },
+            body: [
+              { zh: '医学大会视频的脚本要过一道合规：数据必须带研究背景和剂量，口语化的表达要清理，价格和商业化内容不能出现。过去这件事靠资深同事逐条改，标准留在几个人的经验里。', en: 'Congress scripts go through compliance: numbers need study context and dosage, colloquial phrasing has to be cleaned, pricing and commercial content cannot appear. Reviewers used to do this line by line, with the standard living in their heads.' },
+              { zh: '把这件事接进 AI 之后，问题变了：模型不缺语言能力，缺的是一层可解释、可维护、改一条就能复用的规则。', en: 'Once AI enters the pipeline the problem changes: the model does not lack language ability, it lacks an explainable, maintainable layer where changing one rule improves every future script.' },
+            ] },
+
+          { t: 'figure', w: 12, src: 'assets/images/projects/tezign-rules/rules.webp',
+            cap: { zh: '规则库的三层结构', en: 'Three layers of the rule library' },
+            note: { zh: '基础规则 / 专项规则 / 词库分开维护', en: 'Base rules, specialised rules and lexicons maintained separately' } },
+
+          { t: 'text', w: 12, kicker: { zh: '02 / 做法', en: '02 / Approach' },
+            h: { zh: '把一个人的经验，拆成别人也能用的规则', en: 'Turning one person\'s experience into rules others can use' },
+            body: [
+              { zh: '第一步不是写 prompt，而是把改稿动作归类：20 条基础规则管通用问题（数值背景、人称代词、术语与英文拼写、价格内容、量词），7 类专项规则管场景（口语、品牌与产品名、医学简称、广告法与违禁词、官方用语）。', en: 'The first step was not prompt writing but sorting the edits: 20 base rules for general issues (number context, pronouns, terminology and spelling, pricing, quantifiers), 7 specialised sets for scenarios (spoken language, brand names, medical abbreviations, advertising law and banned terms, official wording).' },
+              { zh: '每条规则都写三件事：什么时候适用、怎么处理、正反两个例子。规则和词库分开存，改一个词不用动规则本身。', en: 'Each rule states when it applies, how to handle it, and one good and one bad example. Rules and lexicons live separately, so changing a term does not touch the rule.' },
+            ],
+            items: [
+              { zh: '规则：编号、名称、适用条件、处理方式、示例', en: 'Rule: number, name, condition, handling, example' },
+              { zh: '词库：口语 / 品牌 / 简称 / 违禁词 / 官方用语，5 套', en: 'Lexicons: spoken, brand, abbreviations, banned, official — 5 sets' },
+              { zh: '边界：模型只按规则改文本，不改事实、数据和结论', en: 'Boundary: the model edits language, never facts, data or conclusions' },
+            ] },
+
+          { t: 'figure', w: 12, src: 'assets/images/projects/tezign-rules/tests.webp',
+            cap: { zh: '测试发现的三个业务问题', en: 'Three business issues found in testing' },
+            note: { zh: '整理成问题清单，和产品、研发一起定位', en: 'Logged for the PM and engineers to locate and fix' } },
+
+          { t: 'text', w: 12, kicker: { zh: '03 / 迭代与测试', en: '03 / Iteration and testing' },
+            h: { zh: '半月一轮，规则跟着业务长', en: 'A rule change every two weeks' },
+            body: [
+              { zh: '规则不是一次写完的。0713 那轮补了“价格内容整段删除”和“量词处理”，0723 那轮补了词库和示例；每轮都先在真实脚本上跑，再决定改哪一条。三轮之后从 16 条长到 20 条，词库固定成 5 套。', en: 'The rules were not written once. One round added whole-paragraph removal of pricing and quantifier handling; the next filled in lexicons and examples. Every round started from real scripts, then decided which rule to change. Three rounds took the set from 16 to 20 rules, with five lexicons.' },
+              { zh: '测试也不是跑通一次就算。两轮完整流程测试，从脚本输入、规则执行到结果输出，整理出 5+ 项问题，其中 3 个是业务侧的关键问题——比如数值缺背景、价格没被识别、口语量词冗余。和产品、研发一起定位，推动到修复。', en: 'Testing was not a single pass. Two full runs — script in, rules applied, result out — produced 5+ issues, three of them business-critical: numbers missing context, pricing not caught, redundant quantifiers. I logged them with the PM and engineers and pushed them to a fix.' },
+            ] },
+
+          { t: 'text', w: 12, kicker: { zh: '04 / 交付', en: '04 / Delivery' },
+            h: { zh: '规则最后要落到能用的东西上', en: 'Rules have to land in things people use' },
+            body: [
+              { zh: '规则之外，我把流程里的重复动作做成了可复用的东西：6 套大会视频模板、3 场大会、15+ 条裂变视频；给客户写了产品操作手册，整理了审核系统的 SOP；还参与素材库的标签设计（核心幻灯 / 安全性幻灯 / 金句），让素材能被检索和复用。', en: 'Beyond the rules, I turned repeated work into reusable assets: six congress video templates across three congresses, 15+ derivative videos, a client-facing user manual, an SOP for the review system, and tag design for the asset library (core slides, safety slides, quotes) so material can be found again.' },
+              { zh: '这些不是“顺便做的运营”，它们决定规则能不能被真实的人用起来：模板降低单次生产成本，手册降低新人的学习成本，标签决定素材以后能不能被找到。', en: 'These were not side tasks. They decide whether the rules get used: templates lower the cost per video, the manual lowers onboarding cost, and tags decide whether assets are findable later.' },
+            ],
+            items: [
+              { zh: '3 场大会 · 6 套视频模板 · 15+ 条裂变视频', en: '3 congresses · 6 templates · 15+ derivative videos' },
+              { zh: '客户操作手册 + 审核系统 SOP', en: 'Client user manual + review-system SOP' },
+              { zh: '素材库标签：核心幻灯 / 安全性幻灯 / 金句', en: 'Asset tags: core slide / safety slide / quote' },
+            ] },
+
+          { t: 'text', w: 12, kicker: { zh: '05 / 结果', en: '05 / Outcome' },
+            h: { zh: '从“我改得快”，到“团队能复用”', en: 'From “I edit fast” to “the team can reuse it”' },
+            body: [
+              { zh: '这套东西的价值不在某一条规则写得多漂亮，而在于它把审校从个人经验变成了团队资产：新人按规则能上手，改一条规则所有脚本都受益，测试记录让下一次迭代有依据。这也是我对 AI 产品的理解——模型能力会变，规则、数据和流程才是能沉淀的部分。', en: 'The value is not in any single rule but in turning review from personal experience into a team asset: a newcomer can start from the rules, one change benefits every script, and the test log gives the next round its evidence. That is how I think about AI products: model capability changes; rules, data and process are what accumulate.' },
+            ],
+            items: [
+              { zh: '规则库：20 条基础 + 7 类专项 + 5 套词库，3 轮迭代', en: 'Rule library: 20 base + 7 specialised + 5 lexicons, 3 rounds' },
+              { zh: '质量：两轮完整测试，5+ 问题，3 个业务关键问题被修复', en: 'Quality: two full test rounds, 5+ issues, 3 business-critical ones fixed' },
+              { zh: '交付：3 场大会、6 套模板、15+ 视频、手册与 SOP', en: 'Delivery: 3 congresses, 6 templates, 15+ videos, manual and SOP' },
+            ] },
+        ],
+        original: '',
+        foot: { zh: '客户与药物名称已脱敏 · 内容为规则与流程层面的公开说明', en: 'Client and product names anonymised; rules and process only' },
       },
     },
     {
