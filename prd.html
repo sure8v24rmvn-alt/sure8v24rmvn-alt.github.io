@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>成长计划 · 产品需求文档 v1.1｜徐鑫悦</title>
+<meta name="description" content="成长计划（AI 考研助手）产品需求文档：问题、用户、设计原则、核心闭环、功能规格、AI 建议协议与验收。">
+<meta name="theme-color" content="#F1EFEA">
+<link rel="canonical" href="https://sure8v24rmvn-alt.github.io/prd.html">
+<style>
+  :root{
+    --paper:#F1EFEA; --card:#F8F6F2; --ink:#16150F; --ink-2:#4C4940; --ink-3:#6B675C;
+    --line:rgba(22,21,15,.16); --line-2:rgba(22,21,15,.07); --accent:#A8452B;
+    --serif:"Source Han Serif SC","Noto Serif SC","Songti SC",SimSun,Georgia,serif;
+    --sans:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,sans-serif;
+    --mono:ui-monospace,Consolas,"Cascadia Mono","Courier New",monospace;
+  }
+  *{box-sizing:border-box}
+  html[data-theme="dark"], html[data-theme="dark"] body{
+    --paper:#0D0D0C; --card:#141412; --ink:#EEEBE3; --ink-2:#B4B0A5; --ink-3:#9C978B;
+    --line:rgba(238,235,227,.2); --line-2:rgba(238,235,227,.09); --accent:#E2805A;
+  }
+  html[data-theme="dark"] body{background:var(--paper)}
+  html[data-theme="dark"] .top{background:rgba(13,13,12,.92)}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.9 var(--sans);
+    -webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{width:min(1120px,100% - 48px);margin:0 auto}
+
+  /* 顶栏 */
+  .top{position:sticky;top:0;z-index:10;background:rgba(241,239,234,.92);
+    backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid var(--line)}
+  .top__in{display:flex;align-items:center;justify-content:space-between;height:58px}
+  .brand{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-2);text-decoration:none}
+  .brand b{color:var(--accent)}
+  .top__links{display:flex;gap:18px;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em}
+  .top__links a{text-decoration:none;color:var(--ink-3)}
+  .top__links a:hover{color:var(--accent)}
+
+  /* 文档头 */
+  .doc-head{padding:clamp(56px,8vw,96px) 0 clamp(28px,3vw,44px)}
+  .kicker{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--ink-3);margin:0 0 18px}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(2.2rem,5.2vw,3.6rem);
+    line-height:1.15;letter-spacing:-.01em;margin:0 0 14px}
+  .doc-sub{font-size:clamp(1rem,1.4vw,1.15rem);color:var(--ink-2);margin:0;max-width:34em}
+  .doc-meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;
+    margin:34px 0 0;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .doc-meta div{display:flex;flex-direction:column;gap:4px}
+  .doc-meta dt{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+  .doc-meta dd{margin:0;font-size:.86rem}
+
+  /* 布局：目录 + 正文 */
+  .doc{display:grid;grid-template-columns:210px minmax(0,1fr);gap:clamp(28px,5vw,72px);
+    padding:12px 0 clamp(64px,8vw,110px);align-items:start}
+  .toc{position:sticky;top:86px}
+  .toc p{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-3);margin:0 0 12px}
+  .toc ol{list-style:none;margin:0;padding:0;counter-reset:t}
+  .toc li{counter-increment:t;margin:0 0 7px}
+  .toc a{display:flex;gap:8px;text-decoration:none;font-size:.8rem;color:var(--ink-2);line-height:1.5}
+  .toc a::before{content:counter(t,decimal-leading-zero);font-family:var(--mono);font-size:.62rem;color:var(--ink-3);padding-top:2px}
+  .toc a:hover{color:var(--accent)}
+  .toc .note{margin-top:18px;font-size:.72rem;color:var(--ink-3);line-height:1.7}
+
+  article{max-width:760px}
+  article section{padding:clamp(24px,3vw,38px) 0;border-top:1px solid var(--line)}
+  article section:first-child{border-top:0;padding-top:0}
+  h2{font-family:var(--serif);font-weight:600;font-size:clamp(1.35rem,2.4vw,1.75rem);
+    line-height:1.35;margin:0 0 18px;display:flex;align-items:baseline;gap:12px}
+  h2 em{font-family:var(--mono);font-style:normal;font-size:.66rem;letter-spacing:.1em;
+    color:var(--accent);padding-top:6px}
+  h3{font-size:1rem;font-weight:600;margin:26px 0 8px;color:var(--ink)}
+  p{margin:0 0 1em;color:var(--ink-2)}
+  p strong{color:var(--ink);font-weight:600}
+  ul,ol{margin:0 0 1em;padding-left:1.25em;color:var(--ink-2)}
+  li{margin:.3em 0}
+  li::marker{color:var(--ink-3)}
+  .lead{font-size:1.05rem;color:var(--ink-2)}
+  .note-box{margin:22px 0 0;padding:16px 18px;border-left:2px solid var(--accent);
+    background:var(--card);font-size:.9rem;color:var(--ink-2)}
+  .note-box b{color:var(--ink)}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 18px;font-family:var(--mono);font-size:.7rem}
+  .flow span{padding:6px 10px;border:1px solid var(--line);border-radius:3px;color:var(--ink-2);background:var(--card)}
+  .flow i{align-self:center;color:var(--ink-3);font-style:normal}
+  .end{margin-top:30px;padding-top:18px;border-top:1px solid var(--line);
+    font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;color:var(--ink-3)}
+  .end a{color:var(--ink-2)}
+
+  @media (max-width:900px){
+    .doc{grid-template-columns:1fr}
+    .toc{position:static;order:-1;padding-bottom:8px}
+    .toc ol{columns:2;column-gap:22px}
+    .doc-meta{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:520px){ .toc ol{columns:1} }
+  @media print{
+    .top,.toc,.top__links{display:none!important}
+    body{background:#fff;font-size:10.5pt;line-height:1.7}
+    .wrap{width:auto}
+    .doc{display:block;padding:0}
+    article{max-width:none}
+    .doc-head{padding:0 0 18px}
+    h1{font-size:24pt}
+    h2{font-size:14pt;page-break-after:avoid}
+    section{page-break-inside:auto}
+    .flow span{border-color:#ccc}
+  }
+</style>
+<script>
+  try { var th = localStorage.getItem('yi-theme'); if (th === 'dark' || th === 'light') document.documentElement.dataset.theme = th; } catch (e) {}
+</script>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top__in">
+    <a class="brand" href="index.html">← 徐鑫悦 <b>/</b> 作品集</a>
+    <div class="top__links">
+      <a href="index.html#p=ai-kaoyan">成长计划案例</a>
+      <a href="assets/docs/growth-plan-prd-v1.1.pdf">PDF</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap doc-head">
+  <p class="kicker">Product Requirement Document · v1.1</p>
+  <h1>成长计划<br>产品需求文档</h1>
+  <p class="doc-sub">一个 AI 辅助的考研规划与执行系统：用户定计划，AI 看见问题、解释原因、给出可采纳的调整。</p>
+
+  <dl class="doc-meta">
+    <div><dt>版本</dt><dd>v1.1 · 2026.10</dd></div>
+    <div><dt>形态</dt><dd>移动端 Web 应用（MVP）</dd></div>
+    <div><dt>作者</dt><dd>徐鑫悦</dd></div>
+    <div><dt>代码</dt><dd>github.com/sure8v24rmvn-alt/growth-plan</dd></div>
+  </dl>
+</div>
+
+<div class="wrap doc">
+  <nav class="toc" aria-label="目录">
+    <p>目录</p>
+    <ol>
+      <li><a href="#s0">写在这一版前面</a></li>
+      <li><a href="#s1">产品是什么</a></li>
+      <li><a href="#s2">问题</a></li>
+      <li><a href="#s3">用户与场景</a></li>
+      <li><a href="#s4">设计原则</a></li>
+      <li><a href="#s5">不做什么</a></li>
+      <li><a href="#s6">核心闭环</a></li>
+      <li><a href="#s7">页面与分工</a></li>
+      <li><a href="#s8">几个关键流程</a></li>
+      <li><a href="#s9">功能说明</a></li>
+      <li><a href="#s10">AI 建议协议</a></li>
+      <li><a href="#s11">数据与实现</a></li>
+      <li><a href="#s12">交付与验收</a></li>
+      <li><a href="#s13">后面做什么</a></li>
+    </ol>
+    <p class="note">这份文档对应 2026 年 10 月的 MVP。若代码行为与本文不一致，以代码为准，并回写这里。</p>
+  </nav>
+
+  <article>
+    <section id="s0">
+      <h2><em>00</em>写在这一版前面</h2>
+      <p>这份文档最初是写给自己的实现清单，后来拿给设计、开发和对产品感兴趣的人看，才重新整理成现在这样。它不追求把每个字段写全，只想把三件事讲清楚：这个产品解决什么问题，为什么这样设计，以及哪些事情我决定不做。</p>
+      <p>文中的“当前版本”指 2026 年 10 月交付的 MVP。涉及数字和交互的地方，都以那版代码为准。</p>
+    </section>
+
+    <section id="s1">
+      <h2><em>01</em>产品是什么</h2>
+      <p class="lead">成长计划是一个给考研学生用的规划与执行工具。</p>
+      <p>用户填进目标院校、专业、考试年份、当前阶段和每天能学多久，产品把它拆成一条从季度到周的目标链，再落到日历上的每日任务。每天执行完，用户花一分钟做复盘，选一个最大的困难，AI 给出一条带原因的建议；用户可以采纳，也可以不理。</p>
+      <p>它不是一个自动生成课表的工具，也不是一个聊天机器人。计划始终由用户拥有，AI 只负责看见问题、解释原因、给出可执行的动作。</p>
+      <div class="note-box"><b>一句话：</b>你来定计划，AI 帮你把计划跑下去。</div>
+    </section>
+
+    <section id="s2">
+      <h2><em>02</em>问题</h2>
+      <p>考研的周期通常是半年到一年。真正难的不是不知道要学什么，而是几件事同时发生：</p>
+      <ul>
+        <li>不会把“考上某校某专业”拆成这个季度、这个月、这周和今天该做什么。</li>
+        <li>计划写得很满，和当天真正能投入的时间对不上。</li>
+        <li>执行断了几天之后，不知道该减负、顺延，还是换一种讲法。</li>
+        <li>市面上的工具要么是一张静态表，要么是通用聊天；改完计划，用户不知道改了什么、为什么改。</li>
+      </ul>
+      <p>所以这个产品要做的不是“更好的计划表”，而是把规划、执行、复盘和建议连成一件每天都能重复的事，并且让每一次建议都有据可查、可以被拒绝。</p>
+    </section>
+
+    <section id="s3">
+      <h2><em>03</em>用户与场景</h2>
+      <h3>目标用户</h3>
+      <p>自己安排复习节奏的考研学生。画像不复杂：考哪里、考什么、什么时候考、现在到哪一步、每天能学几个小时，以及最常卡住的地方——不会做计划、执行不下去、效率低、焦虑、拖延、抓不住重点。</p>
+      <h3>两个场景</h3>
+      <p>小周刚决定考研，知道目标院校，但不知道从哪开始。她走完引导，得到一条四个阶段的路线，第一周只排了三件事。</p>
+      <p>另一个用户连续两天没完成任务。他打开复盘，选了“没时间”，AI 建议把今天的两小时任务挪到周末，并压缩一节练习。他点了采纳，日历随之变化；如果他不认同，点“暂不采纳”，计划保持原样。</p>
+    </section>
+
+    <section id="s4">
+      <h2><em>04</em>设计原则</h2>
+      <ol>
+        <li><strong>计划归用户。</strong>长期目标、路线和日任务的制定权在用户手里，AI 不能未经确认改写它们。</li>
+        <li><strong>建议要能解释。</strong>每条建议都说清楚发现了什么、为什么、建议怎么做、依据是什么、会影响哪里。</li>
+        <li><strong>采纳才生效。</strong>只有用户点“采纳”之后，才允许修改日任务；不采纳就什么都不发生。</li>
+        <li><strong>三个页面各管一件事。</strong>日历负责规划，今日负责执行，复盘负责反馈和优化。</li>
+        <li><strong>完成只有一个事实来源。</strong>任务是否完成以执行记录为准，任务上的完成状态只是界面缓存。</li>
+        <li><strong>空计划不编任务。</strong>今天没有安排时，产品只引导去日历，不凭空生成学科和小时数。</li>
+        <li><strong>移动端优先。</strong>单栏、大圆角、低饱和绿，避免后台管理系统的观感。</li>
+      </ol>
+    </section>
+
+    <section id="s5">
+      <h2><em>05</em>不做什么</h2>
+      <p>这一版明确不做：通用 AI 聊天和对话式改计划；课程平台、资源库、社区、排行榜；真实大模型、真实搜索和视频站 API；登录、账号体系和云同步；未经确认的自动重排和甘特图；在今日页编辑长期目标，在日历页写执行记录，在复盘页改路线。</p>
+      <p>写下来是为了防止“顺手加一个”。这些功能单独看都合理，但会稀释产品的主线：让用户每天愿意打开、愿意完成、愿意复盘。</p>
+    </section>
+
+    <section id="s6">
+      <h2><em>06</em>核心闭环</h2>
+      <div class="flow">
+        <span>目标拆解</span><i>→</i><span>路线规划</span><i>→</i><span>日历安排</span><i>→</i><span>今日执行</span><i>→</i>
+        <span>执行反馈</span><i>→</i><span>AI 分析</span><i>→</i><span>建议优化</span><i>→</i><span>学习辅助</span>
+      </div>
+      <p>八个步骤，实际是四段：</p>
+      <ul>
+        <li><strong>规划。</strong>引导收集画像，生成季度、月、周的目标链，再给出一条解释得通的年度路线。</li>
+        <li><strong>安排。</strong>用户在日历里把周目标拆成具体日期的任务，任务自动挂到对应的季/月/周目标上。</li>
+        <li><strong>执行。</strong>今天只处理今天。看任务、来源和资源，做完打勾，产生执行记录。</li>
+        <li><strong>反馈。</strong>复盘用执行记录回看今天，用户选一个最大的困难，AI 给建议，采纳后只改日任务。</li>
+      </ul>
+      <p>最后一步“学习辅助”不是资源库，而是绑定在当前任务或“学不会”知识点上的讲解；它服务于任务，不独立存在。</p>
+    </section>
+
+    <section id="s7">
+      <h2><em>07</em>页面与分工</h2>
+      <ul>
+        <li><strong>落地页。</strong>说明这是什么，进入引导。</li>
+        <li><strong>引导。</strong>收集院校、专业、年份、阶段、每日时长和常见困难，完成后生成路线。</li>
+        <li><strong>目标。</strong>规划依据中心。展示考试信息、阶段、时长、薄弱科目和困难；可以改薄弱科目，但不在这里改路线。</li>
+        <li><strong>路线。</strong>回答“这一年怎么走”。四个阶段，每个阶段写清楚时间、重点、目标和为什么；可以编辑阶段，不在这里排每天的课。</li>
+        <li><strong>日历。</strong>唯一的计划编辑面。季度、月、周、日四个视图，默认周视图。</li>
+        <li><strong>今日。</strong>每日执行入口，不是第二个日历。任务优先于建议。</li>
+        <li><strong>复盘。</strong>回看今天，选困难，拿建议。</li>
+      </ul>
+      <p>底栏固定四项：目标、路线、日历、今日。复盘没有独立入口，从“今日”进入，底栏仍高亮“今日”，避免用户以为它是第五个一级模块。</p>
+    </section>
+
+    <section id="s8">
+      <h2><em>08</em>几个关键流程</h2>
+
+      <h3>第一次使用</h3>
+      <p>落地页 → 引导（院校、专业、年份、阶段、每日时长、困难、确认）→ 生成路线 → 日历 → 今日。重新走一遍引导会清空已有路线和目标，按新画像重来；这是用户主动重设，不是 AI 改计划。</p>
+
+      <h3>日常使用</h3>
+      <p>在日历建任务 → 今日看到它 → 勾选完成 → 产生执行记录 → 复盘读到今天的完成情况 → 选困难 → 生成建议 → 采纳后只改日任务。</p>
+
+      <h3>当天没有任务</h3>
+      <p>今日显示“今天还没有安排任务”，说明先去日历安排，按钮直达周视图。不生成具体任务，不自动重排，也不改任何目标。复盘同样只显示“今天还没有执行任务”，不出现减负、压缩这类用不上的建议。</p>
+
+      <h3>当天全部完成</h3>
+      <p>AI 区域改成一句完成说明，并引导去复盘；不再出现“建议顺序：暂无任务”，也不再生成新的调整。</p>
+
+      <h3>跨月的一周</h3>
+      <p>查看 8 月 31 日到 9 月 6 日时，标题写“2026年8月31日–9月6日”，不写“8 月第 5 周”；周目标按这一周的起始日匹配。9 月 8 日新建的任务，来源挂到 9 月的月目标，不会误挂到 8 月。</p>
+    </section>
+
+    <section id="s9">
+      <h2><em>09</em>功能说明</h2>
+
+      <h3>日历</h3>
+      <p>周视图是默认视图，七天议程，顶部是这一周的周目标。看哪一周就显示哪一周的目标；没有就写“本周目标未设置”，不自动补一个。</p>
+      <p>有任务的日期显示任务卡，包含标题、科目、时长和知识重点；空白的日期压成一行“暂无安排 · + 添加任务”，保留日期和“今天”标识，避免七张空白大卡把周视图拉成后台列表。</p>
+      <p>任务编辑器有六个字段：名称、科目、日期、时长、知识重点（基础理解 / 练习巩固 / 记忆背诵 / 真题与考试）和备注。新建时默认科目是“数学/逻辑”，和示例标题“高数极限章节复习”对得上。保存后按任务日期自动挂到对应的季/月/周目标，来源区只读展示这条链路。任务详情里写明：完成打卡请到“今日”，这里只做规划。</p>
+
+      <h3>今日</h3>
+      <p>信息顺序是：今日执行 → AI 建议 → 今日状态（默认收起）→ 计划来源（默认收起）→ 学习资源（默认收起）→ 进入复盘。</p>
+      <p>今日状态可以调“可学时长、今天的感觉、今天不想碰的科目”，它只影响建议，不改长期目标。</p>
+      <p>建议的优先级大致是：想回避的科目 → 状态不好时减负 → 计划时长超过可用时长时顺延 → 可用时间明显富余时“先做完现有的，不自动加任务” → 负荷刚好时给执行顺序。所有补丁都要用户采纳后才写进去。</p>
+
+      <h3>复盘</h3>
+      <p>复盘要像回看今天，不像填问卷。上面是执行结果：计划任务数、完成数、计划时长、实际完成时长、完成率和每一条的状态，只读，不能在这里改勾选。下面是“今天最大的阻碍”单选：没时间、学不会、没动力、临时有事、身体状态不好，可以补一句说明。选了困难之后，才出现“根据今天的复盘给出建议”。</p>
+      <p>建议和困难是对应的：没时间、临时有事偏日程调整；学不会偏降低时长、顺延，并配一条基础讲解；没动力、身体状态不好偏缩小当天或后续负荷。当天没有任务时，不产出减负类补丁。重新分析会覆盖上一次建议，仍然要再点一次采纳才生效。</p>
+    </section>
+
+    <section id="s10">
+      <h2><em>10</em>AI 建议协议</h2>
+      <p>日历、今日、复盘共用同一张建议卡，用户能看到的只有七个字段：发现了什么、为什么、建议怎么做、依据、影响范围（今天 / 接下来几天 / 本周）、来源（日历编辑 / 今日聚焦 / 复盘）和状态（待处理 / 已采纳 / 已保留）。另有一组用户看不见的变更草案，采纳后才应用。</p>
+      <p>允许的变更只有四种：改某个任务的时长、把任务挪到另一天、按草案新增任务、移除任务。目标、路线、周/月/季目标都不在可写范围内，执行记录也不能被建议改写。</p>
+      <div class="note-box"><b>这条边界是这个产品最重要的设计：</b>AI 可以建议，但不能直接落库。</div>
+    </section>
+
+    <section id="s11">
+      <h2><em>11</em>数据与实现</h2>
+      <p>产品里有六个核心对象：用户画像（考哪里、什么阶段、每天多久）、周期目标（季/月/周）、路线与阶段、日任务、执行记录和复盘；建议和学习资源依附在它们上面。</p>
+      <p>日任务的完成状态以执行记录为准，任务上的完成状态只是缓存。这样复盘里的数字和今日的勾选永远一致。</p>
+      <p>所有数据存在浏览器 localStorage，没有账号，换浏览器或清缓存会丢，这是 MVP 的已知边界。技术上用 Next.js 16 App Router、React 19、TypeScript 和 Tailwind 4，没有后端。</p>
+      <p>AI 这一版没有接真实模型和搜索 API，建议和资源都由前端规则生成。这是有意的：先用规则把“目标 → 计划 → 执行 → 复盘 → 建议 → 采纳”跑通，验证用户能不能接受“AI 只建议、我决定”的交互，再决定接哪家模型、放在哪一步。填一个 DeepSeek 的 key，可以看到真实模型在同一套交互里的效果。</p>
+    </section>
+
+    <section id="s12">
+      <h2><em>12</em>交付与验收</h2>
+      <p>当前 MVP 已经实现：落地页与引导、画像与季/月/周目标、日历四视图和任务增删改、按日期绑定的来源链、跨月周标题、今日执行与执行记录、今日状态与回避科目、复盘五类困难、结构化建议与采纳、学不会时的演示资源、无任务和全部完成时的轻量说明。</p>
+      <p>验收按这些路径走：</p>
+      <ol>
+        <li>首次走完引导，能看到四个阶段和“为什么”。</li>
+        <li>建任务后今日能看到；勾选后复盘数字一致。</li>
+        <li>复盘必须先选困难才出建议；采纳后只改日任务，目标和路线不变。</li>
+        <li>删掉今天的任务后，今日和复盘都进入“先去日历”的空状态。</li>
+        <li>周视图切换时，周目标和日期范围同步；9 月建的任务不会挂到 8 月。</li>
+        <li>高数任务匹配数学资源，英语阅读匹配英语资源；390px 下没有横向溢出，类型检查通过。</li>
+      </ol>
+    </section>
+
+    <section id="s13">
+      <h2><em>13</em>后面做什么</h2>
+      <ul>
+        <li>云同步和账号，解决清缓存丢计划。</li>
+        <li>在“采纳才写入”不变的前提下，把真实模型换进来。</li>
+        <li>接可核验的学习资源，仍然绑定具体任务，不做资源库。</li>
+        <li>更细的学习数据：连续完成、科目偏差、周目标有没有被日任务支撑。</li>
+      </ul>
+      <p>无论以后多智能，都不能绕过用户确认去改路线和周期目标。这条不会变。</p>
+
+      <p class="end">文档对应 2026-10 的 MVP · 代码 <a href="https://github.com/sure8v24rmvn-alt/growth-plan">github.com/sure8v24rmvn-alt/growth-plan</a> · <a href="index.html#p=ai-kaoyan">回到案例</a></p>
+    </section>
+  </article>
+</div>
+
+</body>
+</html>

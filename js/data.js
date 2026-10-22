@@ -215,6 +215,7 @@ window.SITE_DATA = {
       ],
       drawings: [],
       links: [
+        { label: { zh: '查看产品文档（PRD）', en: 'Read the PRD' }, url: 'prd.html' },
         { label: { zh: 'GitHub 仓库', en: 'GitHub repo' }, url: 'https://github.com/sure8v24rmvn-alt/growth-plan' },
       ],
 
