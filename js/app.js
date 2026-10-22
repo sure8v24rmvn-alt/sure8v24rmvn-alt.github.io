@@ -360,7 +360,7 @@
     var left = document.createElement('div');
     if (p.avatar) {
       left.innerHTML = '<figure class="portrait">' +
-        '<div class="portrait__box" data-seed="avatar" data-fallback="blank" data-src="' + attr(p.avatar) + '" data-label="PORTRAIT" data-alt="' + esc(t(p.name)) + '"></div>' +
+        '<div class="portrait__box" data-seed="avatar" data-eager="1" data-fallback="blank" data-src="' + attr(p.avatar) + '" data-label="PORTRAIT" data-alt="' + esc(t(p.name)) + '"></div>' +
         '<figcaption class="portrait__dim"><span>' + esc(pt.ratio || '3 : 4') + '</span><span>' + esc(t(p.name)) + '</span></figcaption></figure>';
     } else {
       var idRows = (a.idcard || []).map(function (r) {

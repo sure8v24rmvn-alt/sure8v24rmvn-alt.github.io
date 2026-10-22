@@ -31,7 +31,7 @@ window.SITE_DATA = {
     email:     '1345341356@qq.com',
     phone:     '15809626115',
     wechat:    '',
-    avatar:    '',                        // 例：'assets/images/avatar.jpg'；留空显示占位框
+    avatar:    'assets/images/avatar.webp',  // 3:4 证件照；留空则显示档案卡
     links: [
       // { label: 'GitHub', url: 'https://github.com/...' },
     ],
